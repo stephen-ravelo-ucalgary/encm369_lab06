@@ -10,13 +10,14 @@ void int2str(char *dest, int src)
   unsigned abs_src, ten, rem, temp;
   char *p, *q;
 
-  if (src == 0) {
+  if (src == 0)
+  {
     dest[0] = '0';
     dest[1] = '\0';
     return;
   }
 
-  if (src == -2147483648)  // check for 32-bit "weird number"
+  if (src == -2147483648) // check for 32-bit "weird number"
     abs_src = 0x80000000u;
   else if (src < 0)
     abs_src = -src;
@@ -26,7 +27,8 @@ void int2str(char *dest, int src)
   // compute and store decimal digits of abs_src
   p = dest;
   ten = 10u;
-  while (abs_src != 0) {
+  while (abs_src != 0)
+  {
     rem = abs_src % ten;
     *p = digits[rem];
     p++;
@@ -34,7 +36,8 @@ void int2str(char *dest, int src)
   }
 
   // store '-' if necessary, then terminate string
-  if (src < 0) {
+  if (src < 0)
+  {
     *p = '-';
     p++;
   }
@@ -43,7 +46,8 @@ void int2str(char *dest, int src)
   // reverse order of chars in string
   q = p - 1;
   p = dest;
-  while (p < q) {
+  while (p < q)
+  {
     temp = *p;
     *p = *q;
     *q = temp;
